@@ -1,0 +1,22 @@
+---
+# tasks file for nodejs
+
+- name: Downloading nvm installer
+  become: yes
+  become_user: root
+  get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh
+    dest: ~/install.sh
+    mode: 0755
+
+- name: Installing nvm
+  become: yes
+  become_user: root
+  shell: ~/install.sh
+  args:
+    executable: /bin/bash
+
+- name: Installing node and npm
+  become: yes
+  become_user: root
+  shell: source ~/.nvm/nvm.sh && nvm install node
