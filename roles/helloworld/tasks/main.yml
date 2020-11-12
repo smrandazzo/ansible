@@ -8,7 +8,6 @@
     owner: ec2-user
     group: ec2-user
     mode: 0644
-  notify: restart helloworld
 
 - name: Copying the upstart file
   copy:
@@ -19,6 +18,8 @@
     mode: 0644
 
 - name: Starting the HelloWorld node service
+  become: yes
+  become_user: root
   service:
     name: helloworld
     state: started

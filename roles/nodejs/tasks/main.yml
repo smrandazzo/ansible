@@ -3,7 +3,7 @@
 
 - name: Downloading nvm installer
   become: yes
-  become_user: root
+  become_user: ec2-user
   get_url:
     url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh
     dest: ~/install.sh
@@ -11,12 +11,12 @@
 
 - name: Installing nvm
   become: yes
-  become_user: root
+  become_user: ec2-user
   shell: ~/install.sh
   args:
     executable: /bin/bash
 
 - name: Installing node and npm
   become: yes
-  become_user: root
+  become_user: ec2-user
   shell: source ~/.nvm/nvm.sh && nvm install node
